@@ -1,0 +1,132 @@
+     /* =================================================================== */
+     /*                                                                     */
+     /*  Documentation:                                                     */
+     /*                                                                     */
+     /*  Utility . . . : CRTMSGDS                                           */
+     /*  Object  . . . : A_INSTALL  (PGM)                                   */
+     /*  Source member : A_INSTALL                                          */
+     /*  Source type . : CLLE                                               */
+     /*  Description   : CRTMSGDS - Installer                               */
+     /*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      */
+     /*  Created . . . :                                                    */
+     /*                                                                     */
+     /* =================================================================== */
+     /*                                                                     */
+     /*  This software is free software, you can redistribute it and/or     */
+     /*  modify it under the terms of the GNU General Public License (GPL)  */
+     /*  as published by the Free Software Foundation.                      */
+     /*                                                                     */
+     /*  See GNU General Public License for details.                        */
+     /*          http://www.opensource.org                                  */
+     /*          http://www.opensource.org/licenses/gpl-license.html        */
+     /*                                                                     */
+     /* =================================================================== */
+     /*  History:                                                           */
+     /*                                                                     */
+     /*  Datum       Name          Änderung                                 */
+     /*  ----------  ------------  ---------------------------------------  */
+     /*                                                                     */
+     /* =================================================================== */
+     /*   >>PRE-COMPILER<<                                                  */
+     /*     >>CRTCMD<<    CRTBNDCL  PGM(QTEMP/&OB) +                        */
+     /*                             SRCFILE(&SL/&SF) SRCMBR(&SM);           */
+     /*     >>IMPORTANT<<                                                   */
+     /*       >>PARM<<    OPTION(*EVENTF);                                  */
+     /*     >>END-IMPORTANT<<                                               */
+     /*     >>EXECUTE<<                                                     */
+     /*     >>CMD<<       CALL   PGM(QTEMP/A_INSTALL) +                     */
+     /*                   PARM('*CURRENT' '&SF' '&LI' 'NO');                */
+     /*     >>CMD<<       DLTPGM PGM(QTEMP/A_INSTALL);                      */
+     /*   >>END-PRE-COMPILER<<                                              */
+     /* =================================================================== */
+             PGM        PARM(&TGTRLS &SRCFILE &TOLIB &CRTTSTPGM)
+
+             DCL        VAR(&TGTRLS   ) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRCFILE  ) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&TOLIB    ) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CRTTSTPGM) TYPE(*CHAR) LEN(10)
+
+             DCL        VAR(&SRCLIB   ) TYPE(*CHAR) LEN(10)
+
+             CHGVAR     VAR(&SRCLIB) VALUE(&TOLIB   )
+
+     /* -------------------------------- */
+     /*  Delete old objects              */
+     /* -------------------------------- */
+             DLTF       FILE(&TOLIB/PRTLOGP)
+             MONMSG     MSGID(CPF2105)
+
+             DLTMOD     MODULE(&TOLIB/PRTLOG)
+             MONMSG     MSGID(CPF2105)
+
+             DLTSRVPGM  SRVPGM(&TOLIB/PRTLOG)
+             MONMSG     MSGID(CPF2105)
+
+             DLTMOD     MODULE(&TOLIB/PRTLOG_T)
+             MONMSG     MSGID(CPF2105)
+
+             DLTPGM     PGM(&TOLIB/PRTLOG_T)
+             MONMSG     MSGID(CPF2105)
+
+             RMVMSG     PGMQ(*SAME (*)) CLEAR(*ALL)
+
+     /* -------------------------------- */
+     /*  Create objects                  */
+     /* -------------------------------- */
+             CRTPRTF    FILE(&TOLIB/PRTLOGP) +
+                          SRCFILE(&SRCLIB/&SRCFILE) SRCMBR(*FILE) +
+                          PAGESIZE(66 80) LPI(6) CPI(10) OVRFLW(60)
+             DLTSPLF    FILE(PRTLOGP   ) JOB(*) SPLNBR(*LAST)
+             MONMSG     MSGID(CPF0000)
+
+             CRTRPGMOD  MODULE(&TOLIB/PRTLOG) +
+                          SRCFILE(&SRCLIB/&SRCFILE) SRCMBR(*MODULE) +
+                          DBGVIEW(*LIST) TRUNCNBR(*NO) +
+                          TGTRLS(&TGTRLS)
+             DLTSPLF    FILE(PRTLOG    ) JOB(*) SPLNBR(*LAST)
+             MONMSG     MSGID(CPF0000)
+
+             CRTSRVPGM  SRVPGM(&TOLIB/PRTLOG) +
+                          MODULE(&TOLIB/PRTLOG) +
+                          EXPORT(*ALL) +
+                          ACTGRP(*CALLER) +
+                          BNDSRVPGM(&TOLIB/BASICS1) +
+                          DETAIL(*BASIC) +
+                          TGTRLS(&TGTRLS) +
+                          TEXT('SrvPgm  : Print log')
+             DLTSPLF    FILE(PRTLOG    ) JOB(*) SPLNBR(*LAST)
+             MONMSG     MSGID(CPF0000)
+
+     /* -------------------------------- */
+     /*  Create test programs            */
+     /* -------------------------------- */
+             IF         COND(&CRTTSTPGM *EQ 'YES') THEN(DO)
+
+                CRTRPGMOD  MODULE(&TOLIB/PRTLOG_T) +
+                             SRCFILE(&SRCLIB/&SRCFILE) SRCMBR(*MODULE) +
+                             DBGVIEW(*LIST) TRUNCNBR(*NO) +
+                             TGTRLS(&TGTRLS)
+                DLTSPLF    FILE(PRTLOG_T  ) JOB(*) SPLNBR(*LAST)
+                MONMSG     MSGID(CPF0000)
+
+                CRTPGM     PGM(&TOLIB/PRTLOG_T) +
+                             MODULE(&TOLIB/PRTLOG_T) +
+                             BNDSRVPGM(&TOLIB/PRTLOG &TOLIB/BASICS1) +
+                             ACTGRP(*NEW) +
+                             TGTRLS(&TGTRLS) +
+                             DETAIL(*BASIC)
+                DLTSPLF    FILE(PRTLOG_T  ) JOB(*) SPLNBR(*LAST)
+                MONMSG     MSGID(CPF0000)
+
+             ENDDO
+
+     /* -------------------------------- */
+     /*  Delete obsolete objects         */
+     /* -------------------------------- */
+             DLTMOD     MODULE(&TOLIB/PRTLOG)
+
+             IF         COND(&CRTTSTPGM *EQ 'YES') THEN(DO)
+                DLTMOD     MODULE(&TOLIB/PRTLOG_T)
+             ENDDO
+
+             ENDPGM

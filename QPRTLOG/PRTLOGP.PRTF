@@ -1,0 +1,70 @@
+      *=====================================================================*
+      *                                                                     *
+      *  UBM K Meyer GmbH , Düsseldorf                                      *
+      *                                                                     *
+      *  Bereich  : Allgemein                                               *
+      *  Druckdat.: AL0913NPR                                               *
+      *  Typ      : PRTF                                                    *
+      *                                                                     *
+      *  erstellt : 07.01.2002  Th. Raddatz                                 *
+      *                                                                     *
+      * =================================================================== *
+      *   >>PRE-COMPILER<<                                                  *
+      *     >>CRTCMD<<  CRTPRTF       FILE(&LI/&OB) +                       *
+      *                               SRCFILE(&SL/&SF)  +                   *
+      *                               SRCMBR(&SM);                          *
+      *     >>IMPORTANT<<                                                   *
+      *       >>PARM<< PAGESIZE(66 80);                                     *
+      *       >>PARM<< LPI(6);                                              *
+      *       >>PARM<< CPI(10);                                             *
+      *       >>PARM<< OVRFLW(60);                                          *
+      *       >>PARM<< OPTION(*EVENTF);                                     *
+      *     >>END-IMPORTANT<<                                               *
+      *     >>EXECUTE<<                                                     *
+      *   >>END-PRE-COMPILER<<                                              *
+      *=====================================================================*
+      *
+     A          R NEWPAGE                   SKIPB(002)
+      *
+     A                                     1' '
+      *
+     A          R HEAD1                     SPACEA(001)
+      *
+     A            $$HEADDT      10   O     6
+     A            $$HEADTM       8   O    17
+     A                                    68'Page: '
+     A            $$HEADPG       5   O    74
+      *
+     A          R HEAD2                     SPACEA(002)
+      *
+     A            $$HEADLN      66   O     6
+      *
+     A          R HEADW1                    SPACEA(001)
+      *
+     A            $$HEADDTW     10   O     6
+     A            $$HEADTMW      8   O    17
+     A                                   120'Page: '
+     A            $$HEADPGW      5   O   126
+      *
+     A          R HEADW2                    SPACEA(002)
+      *
+     A            $$HEADLNW    118   O     6
+      *
+     A          R POS                       SPACEB(001)
+      *
+     A  20        $$DATE         6S 0O     6EDTCDE(Y)
+     A  20        $$TIME         6S 0O    15EDTWRD('  :  :  ')
+     A  20        $$MSGID        7   O    24
+     A            $$MSGTEXT     40   O    32
+      *
+     A          R POSW                      SPACEB(001)
+      *
+     A  20        $$DATE         6S 0O     6EDTCDE(Y)
+     A  20        $$TIME         6S 0O    15EDTWRD('  :  :  ')
+     A  20        $$MSGID        7   O    24
+     A            $$MSGTEXTW    92   O    32
+      *
+     A          R NEWLINE                   SPACEB(001)
+      *
+     A                                     1' '
+      *
