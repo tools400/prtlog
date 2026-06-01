@@ -1,6 +1,6 @@
       *=====================================================================*
       *                                                                     *
-      *  UBM K Meyer GmbH , Düsseldorf                                      *
+      *  UBM K Meyer GmbH , Dsseldorf                                      *
       *                                                                     *
       *  Bereich  : Allgemein                                               *
       *  Druckdat.: AL0913NPR                                               *
@@ -52,15 +52,15 @@
       *
      A          R POS                       SPACEB(001)
       *
-     A  20        $$DATE         6S 0O     6EDTCDE(Y)
-     A  20        $$TIME         6S 0O    15EDTWRD('  :  :  ')
+     A  20        $$DATE         8   O     6
+     A  20        $$TIME         8   O    15
      A  20        $$MSGID        7   O    24
      A            $$MSGTEXT     40   O    32
       *
      A          R POSW                      SPACEB(001)
       *
-     A  20        $$DATE         6S 0O     6EDTCDE(Y)
-     A  20        $$TIME         6S 0O    15EDTWRD('  :  :  ')
+     A  20        $$DATE         8   O     6
+     A  20        $$TIME         8   O    15
      A  20        $$MSGID        7   O    24
      A            $$MSGTEXTW    92   O    32
       *

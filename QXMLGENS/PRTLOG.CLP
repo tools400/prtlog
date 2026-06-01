@@ -19,7 +19,7 @@
 /* -------------------------------------------------------------------------- */
              XMLGENINC  XINCLUDE(*YES)
 
-             XMLGENVRS XSRCFILE(QPRTLOG) XSRCLIB(TOOLS400) XSRCMBR(COPYRIGHT)
+             XMLGENVRS XSRCFILE(QPRTLOG) XSRCLIB(PRTLOGD) XSRCMBR(COPYRIGHT)
 
              XMLGENSET  XVAR(&SRCFILE) XVALUE(QPRTLOG)
 
@@ -30,37 +30,37 @@
 /*  Deploy source member              */
 /* ---------------------------------- */
              XMLGENMBR  XMBR(A_INSTALL ) XMBRATR(CLLE  ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*FILE  ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(A_README  ) XMBRATR(TXT   ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*FILE  ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(COPYRIGHT ) XMBRATR(RPGLE ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*CMD    ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(PPRTLOG   ) XMBRATR(RPGLE ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*CMD    ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(PRTLOG_T  ) XMBRATR(RPGLE ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*CMD    ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(PRTLOG    ) XMBRATR(RPGLE ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*PGM    ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 
              XMLGENMBR  XMBR(PRTLOGP   ) XMBRATR(PRTF  ) +
-                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(TOOLS400) +
+                          XFROMSRCF(QPRTLOG   ) XFROMSRCL(PRTLOGD) +
                           XTOSRCF(QPRTLOG   ) XOBJTYPE(*PNLGRP ) +
                           XGENCRT(*NO ) XPARAM(*BLANK)
 

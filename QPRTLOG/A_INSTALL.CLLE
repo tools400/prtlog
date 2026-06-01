@@ -23,7 +23,7 @@
      /* =================================================================== */
      /*  History:                                                           */
      /*                                                                     */
-     /*  Datum       Name          Änderung                                 */
+     /*  Datum       Name          nderung                                 */
      /*  ----------  ------------  ---------------------------------------  */
      /*                                                                     */
      /* =================================================================== */
@@ -90,7 +90,7 @@
                           MODULE(&TOLIB/PRTLOG) +
                           EXPORT(*ALL) +
                           ACTGRP(*CALLER) +
-                          BNDSRVPGM(&TOLIB/BASICS1) +
+                          BNDSRVPGM(*LIBL/BASICS1) +
                           DETAIL(*BASIC) +
                           TGTRLS(&TGTRLS) +
                           TEXT('SrvPgm  : Print log')
