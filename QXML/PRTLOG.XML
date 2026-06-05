@@ -51,7 +51,7 @@
       appblddate CDATA #REQUIRED
      >
      ]>
-<upload  appname="PRTLOG"  appauthor="Thomas Raddatz"  appblddate=" 6/01/2026">
+<upload  appname="PRTLOG"  appauthor="Thomas Raddatz"  appblddate=" 6/05/2026">
 <install_instructions><![CDATA[
      *----------------------------------------------------------------      ------
      *  1. Upload entire XML to your AS/400 to a source file 112 long, into any mbr
@@ -1316,7 +1316,7 @@ srccssid=  "01141">
      /* =================================================================== */
      /*  History:                                                           */
      /*                                                                     */
-     /*  Datum       Name           nderung                                 */
+     /*  Datum       Name          Änderung                                 */
      /*  ----------  ------------  ---------------------------------------  */
      /*                                                                     */
      /* =================================================================== */
@@ -1556,7 +1556,7 @@ srccssid=  "01141">
 //=====================================================================*
 //  History:                                                           *
 //                                                                     *
-//  Datum       Name           nderung                                 *
+//  Datum       Name          Änderung                                 *
 //  ----------  ------------  ---------------------------------------  *
 //  11.11.2004  Th.Raddatz    Changed PREFIX to QUALIFIED.             *
 //                                                                     *
@@ -1712,7 +1712,7 @@ srccssid=  "01141">
 //=====================================================================*
 //  History:                                                           *
 //                                                                     *
-//  Datum       Name           nderung                                 *
+//  Datum       Name          Änderung                                 *
 //  ----------  ------------  ---------------------------------------  *
 //  11.11.2004  Th.Raddatz    Changed PREFIX to QUALIFIED.             *
 //                                                                     *
@@ -2418,12 +2418,10 @@ srclen  =  "00112"
 srccssid=  "01141">
 <copysrc><![CDATA[
       *=====================================================================*
-      *                                                                     *
-      *  UBM K Meyer GmbH , D sseldorf                                      *
-      *                                                                     *
-      *  Bereich  : Allgemein                                               *
-      *  Druckdat.: AL0913NPR                                               *
-      *  Typ      : PRTF                                                    *
+      *  Author  :  Thomas Raddatz                                          *
+      *  Date    :  06.05.2002                                              *
+      *  E-mail  :  thomas.raddatz@tools400.de                              *
+      *  Homepage:  www.tools400.de                                         *
       *                                                                     *
       *  erstellt : 07.01.2002  Th. Raddatz                                 *
       *                                                                     *
